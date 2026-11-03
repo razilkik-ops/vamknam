@@ -1,5 +1,6 @@
 #!/bin/zsh
 cd "${0:A:h}"
+python3 build.py || exit 1
 if /usr/bin/curl -fsS http://localhost:4318/ >/dev/null 2>&1; then
   open http://localhost:4318/
   exit 0

@@ -9,6 +9,9 @@ TEMPLATE = (DIST / 'index.html').read_text(encoding='utf-8')
 PAGES = {
     'catalog/index.html': 'Каталог',
     'cart/index.html': 'Корзина',
+    'about/index.html': 'О мастере',
+    'reviews/index.html': 'Отзывы',
+    'contacts/index.html': 'Контакты',
     'how-to-order/index.html': 'Как заказать',
     'product/index.html': 'Изделия',
     'product/klyuchnitsa-listya/index.html': 'Ключница «Листья»',

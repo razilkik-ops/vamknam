@@ -1,2 +1,65 @@
 <!doctype html>
-<html lang="ru"><head><meta charset="UTF-8"><base href="../"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#fbf7ef"><title>Как заказать — vamknam.by</title><meta name="description" content="Авторские ключницы, копилки, блокноты и декор из дерева. Лазерная резка и персонализация. vamknam.by"><link rel="icon" href="assets/logo.jpg"><link rel="stylesheet" href="style.css?v=20261117-1"><script defer src="app.js?v=20261117-1"></script></head><body><header id="header" class="header"></header><main id="app"></main><footer id="footer"></footer><div id="toast" role="status" aria-live="polite"></div></body></html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<base href="../">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#fbf7ef">
+<title>Как заказать — vamknam.by</title>
+<meta name="description" content="Авторские ключницы, копилки, блокноты и декор из дерева. Лазерная резка и персонализация. vamknam.by">
+<link rel="icon" href="assets/logo.jpg">
+<link rel="stylesheet" href="style.css?v=20261117-2">
+<script defer src="app.js?v=20261117-2"></script>
+</head>
+<body class="order-page">
+<header id="header" class="header">
+<div class="header-inner">
+<a class="brand" href="./" aria-label="vamknam.by — главная">
+<img src="assets/logo.jpg" width="44" height="44" alt="Цветочный орнамент мастерской">
+<span>vamknam.by</span>
+</a>
+<nav id="main-nav" aria-label="Главная навигация">
+
+<a href="catalog/">Каталог</a>
+
+<a href="how-to-order/" aria-current="page">Как заказать</a>
+
+<a href="about/">О мастере</a>
+
+<a href="reviews/">Отзывы</a>
+
+<a href="contacts/">Контакты</a>
+
+</nav>
+<div class="header-actions">
+<a class="phone" href="tel:+375447535310" aria-label="Позвонить: +375 44 753-53-10">
+<img class="icon" src="assets/reference/phone.svg" alt="" width="22" height="22"><span>+375 44 753-53-10</span>
+</a>
+<a class="telegram" href="tg://resolve?phone=375447535310" aria-label="Написать в Telegram">
+<img class="icon" src="assets/reference/telegram.svg" alt="" width="32" height="32">
+</a>
+<a class="header-cart" id="header-cart" href="cart/" aria-label="Открыть корзину" aria-haspopup="dialog" aria-controls="cart-drawer">
+<img class="icon" src="assets/reference/cart.svg" alt="" width="24" height="24">
+<span class="header-cart-label">Корзина</span>
+<span class="cart-badge" data-cart-count hidden>0</span>
+</a>
+<button class="menu-toggle" id="menu-toggle" type="button" aria-label="Открыть меню" aria-controls="main-nav" aria-expanded="false">
+<img class="icon" src="assets/reference/menu.svg" alt="" width="24" height="24">
+</button>
+</div>
+</div>
+</header>
+<main id="app"></main>
+<footer id="footer"><div class="footer-inner"><a href="./">vamknam.by</a><span>Изделия из дерева с душой</span><a href="https://www.instagram.com/vamknam.by/" target="_blank" rel="noopener">Instagram @vamknam.by</a><a href="cart/">Корзина (<span data-cart-count>0</span>)</a></div></footer>
+<dialog id="cart-drawer" class="cart-drawer" aria-labelledby="cart-drawer-title">
+<div class="drawer-heading">
+<div><span class="drawer-eyebrow">Выбрано с душой</span><h2 id="cart-drawer-title">Ваша корзина</h2></div>
+<button type="button" class="drawer-close" data-cart-close aria-label="Закрыть корзину"><img class="icon" src="assets/reference/close.svg" alt="" width="22" height="22"></button>
+</div>
+<div id="cart-drawer-content" class="drawer-content"></div>
+</dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="cart-announcement" class="sr-only" role="status" aria-live="polite"></div>
+</body>
+</html>

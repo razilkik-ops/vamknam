@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <base href="<%= base %>">
+  <% if (is404) { %><script>document.querySelector('base').href=location.hostname.endsWith('github.io')?'/vamknam/':'/';</script><% } %>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#fbf7ef">
+  <title><%= title %> — vamknam.by</title>
+  <meta name="description" content="Авторские ключницы, копилки, блокноты и декор из дерева. Лазерная резка и персонализация. vamknam.by">
+  <link rel="icon" href="assets/logo.jpg">
+  <link rel="stylesheet" href="style.css?v=<%= assetVersion %>">
+  <script defer src="app.js?v=<%= assetVersion %>"></script>
+</head>
+<body class="<%= pageClass %>">
+  <%- include('partials/header') %>
+  <main id="app"></main>
+  <%- include('partials/footer') %>
+  <%- include('partials/cart-drawer') %>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="cart-announcement" class="sr-only" role="status" aria-live="polite"></div>
+</body>
+</html>

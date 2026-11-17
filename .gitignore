@@ -2,3 +2,4 @@
 .openai/
 .local-server/
 *.log
+node_modules/

@@ -1,0 +1,16 @@
+# Иконки контактов
+
+Созданы встроенным ImageGen, отдельный вызов на каждую иконку. Прозрачный фон, один объект в кадре. Исходники: reference-assets/contact-phone.png, contact-telegram.png, contact-instagram.png. Веб-файлы: dist/assets/contact/phone.png, telegram.png, instagram.png.
+
+## phone
+
+Use case: illustration-story. Asset type: one premium contact icon for a warm ivory and walnut handmade wooden gifts website. Create ONE simple highly legible sculptural icon made of light birch wood with fine natural grain, dark walnut side edges and a very subtle warm soft shadow. Refined miniature product illustration, near frontal three-quarter view, restrained pale honey and dark brown palette. Match a cohesive set of crafted wooden magnifying glass, chat bubble and gift parcel icons. Whole object centered, about 78 percent of a square canvas. Genuinely transparent background. No backdrop, no pedestal, no text, no letters, no numbers, no collage, no other icons or separate objects. Subject: ONE classic curved telephone receiver handset made of pale birch wood, elegant rounded earpiece and mouthpiece, dark walnut sides, positioned diagonally at about 35 degrees. Recognizable phone-call icon, no telephone base, no cord.
+
+## telegram
+
+Use case: illustration-story. Asset type: one premium contact icon for a warm ivory and walnut handmade wooden gifts website. Create ONE simple highly legible sculptural icon made of light birch wood with fine natural grain, dark walnut side edges and a very subtle warm soft shadow. Refined miniature product illustration, near frontal three-quarter view, restrained pale honey and dark brown palette. Match a cohesive set of crafted wooden magnifying glass, chat bubble and gift parcel icons. Whole object centered, about 78 percent of a square canvas. Genuinely transparent background. No backdrop, no pedestal, no text, no letters, no numbers, no collage, no other icons or separate objects. Subject: ONE clean folded paper-airplane symbol, the instantly recognizable Telegram-style paper plane silhouette, sculpted from pale birch wood with dark walnut folded edges. Pointing up and to the right. No surrounding circle, no blue color, no lettering.
+
+## instagram
+
+Use case: illustration-story. Asset type: one premium contact icon for a warm ivory and walnut handmade wooden gifts website. Create ONE simple highly legible sculptural icon made of light birch wood with fine natural grain, dark walnut side edges and a very subtle warm soft shadow. Refined miniature product illustration, near frontal three-quarter view, restrained pale honey and dark brown palette. Match a cohesive set of crafted wooden magnifying glass, chat bubble and gift parcel icons. Whole object centered, about 78 percent of a square canvas. Genuinely transparent background. No backdrop, no pedestal, no text, no letters, no numbers, no collage, no other icons or separate objects. Subject: ONE Instagram-style camera glyph sculpted from pale birch wood: a rounded-square frame with a large circular lens opening in the center and one small dark walnut dot in the upper-right corner. Dark walnut side edges. A simple recognizable flat camera-symbol medallion, not a realistic vintage camera. No lettering, no extra objects.
+

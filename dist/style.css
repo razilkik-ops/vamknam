@@ -236,3 +236,17 @@ body.cart-open{overflow:hidden}
  .contact-card{grid-template-columns:60px minmax(0,1fr);gap:4px 16px;align-items:center}
  .contact-card>.contact-illustration{grid-row:1/3;width:60px;height:60px;margin:0}
 }
+/* Единая квадратная фотогалерея без блока воспроизведения. */
+.product-gallery{padding:24px;background:#f8f2e7}
+.product-gallery .gallery-primary{display:block}
+.product-gallery .main-photo{display:block;width:100%;max-width:none;height:auto;aspect-ratio:1;grid-column:auto;background:#f8f2e7}
+.product-gallery .main-photo img{width:100%;height:100%;aspect-ratio:1;object-fit:contain;background:#f8f2e7}
+.product-gallery .main-photo.portrait-photo img{object-fit:cover}
+.product-gallery .thumbnails{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.product-gallery .thumb{width:clamp(76px,23%,146px);height:auto;aspect-ratio:1;flex:0 0 auto;background:#f8f2e7}
+.product-gallery .thumb img{width:100%;height:100%;aspect-ratio:1;object-fit:contain;background:#f8f2e7}
+.product-gallery .thumb[data-photo="key-product-portrait"] img{object-fit:cover}
+#photo-dialog>img{width:min(76vh,760px,80vw);height:auto;max-height:none;aspect-ratio:1;object-fit:contain}
+button:not(.main-photo):not(.thumb),.button,.order-button,.add-to-cart,#header .header-cart,.catalog-categories a{border-radius:9999px}
+.catalog-categories [aria-current]{border:2px solid var(--brown);background:var(--paper);color:#6c4e2b;padding:6px 12px}
+@media(max-width:740px){.product-gallery{padding:16px}.catalog-categories [aria-current]{padding:6px 9px}}

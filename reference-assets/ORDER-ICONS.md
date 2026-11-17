@@ -1,6 +1,6 @@
 # Order page illustrations
 
-Built-in ImageGen. One separate generation and PNG per asset. Transparent background preserved. Sources: order-*.png; web copies: dist/assets/order/*.png.
+Built-in ImageGen. One separate generation and PNG per asset. Transparent background preserved. Sources: order-*.png; web copies: dist/assets/order/*.webp.
 
 ## bird
 

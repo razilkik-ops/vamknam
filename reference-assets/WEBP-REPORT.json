@@ -1,0 +1,322 @@
+[
+  {
+    "source": "00d05f14fb07a27b.jpg",
+    "webp": "00d05f14fb07a27b.webp",
+    "before": 70980,
+    "after": 74656,
+    "width": 640,
+    "height": 1136
+  },
+  {
+    "source": "043578f271a851df.jpg",
+    "webp": "043578f271a851df.webp",
+    "before": 215334,
+    "after": 147714,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "7bad32496d2069e0.jpg",
+    "webp": "7bad32496d2069e0.webp",
+    "before": 136104,
+    "after": 132438,
+    "width": 640,
+    "height": 1136
+  },
+  {
+    "source": "a6fadaf877678293.jpg",
+    "webp": "a6fadaf877678293.webp",
+    "before": 96907,
+    "after": 87322,
+    "width": 640,
+    "height": 1136
+  },
+  {
+    "source": "aceaea69836cb9f5.jpg",
+    "webp": "aceaea69836cb9f5.webp",
+    "before": 149217,
+    "after": 155160,
+    "width": 640,
+    "height": 1136
+  },
+  {
+    "source": "cannon.jpg",
+    "webp": "cannon.webp",
+    "before": 514138,
+    "after": 192702,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "contact/instagram.png",
+    "webp": "contact/instagram.webp",
+    "before": 182204,
+    "after": 22310,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "source": "contact/phone.png",
+    "webp": "contact/phone.webp",
+    "before": 111219,
+    "after": 19834,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "source": "contact/telegram.png",
+    "webp": "contact/telegram.webp",
+    "before": 134814,
+    "after": 19338,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "source": "house.jpg",
+    "webp": "house.webp",
+    "before": 516548,
+    "after": 193898,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "logo.jpg",
+    "webp": "logo.webp",
+    "before": 279715,
+    "after": 11250,
+    "width": 176,
+    "height": 176
+  },
+  {
+    "source": "order/bird.png",
+    "webp": "order/bird.webp",
+    "before": 399723,
+    "after": 63048,
+    "width": 600,
+    "height": 548
+  },
+  {
+    "source": "order/calendar.png",
+    "webp": "order/calendar.webp",
+    "before": 443600,
+    "after": 47368,
+    "width": 600,
+    "height": 531
+  },
+  {
+    "source": "order/checklist.png",
+    "webp": "order/checklist.webp",
+    "before": 393027,
+    "after": 42446,
+    "width": 548,
+    "height": 600
+  },
+  {
+    "source": "order/home.png",
+    "webp": "order/home.webp",
+    "before": 372415,
+    "after": 41762,
+    "width": 600,
+    "height": 548
+  },
+  {
+    "source": "process/choose.png",
+    "webp": "process/choose.webp",
+    "before": 110480,
+    "after": 29230,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "source": "process/deliver.png",
+    "webp": "process/deliver.webp",
+    "before": 147816,
+    "after": 18960,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "source": "process/discuss.png",
+    "webp": "process/discuss.webp",
+    "before": 145387,
+    "after": 16070,
+    "width": 384,
+    "height": 384
+  },
+  {
+    "source": "reference/custom.jpg",
+    "webp": "reference/custom.webp",
+    "before": 406059,
+    "after": 122514,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/hero.jpg",
+    "webp": "reference/hero.webp",
+    "before": 330605,
+    "after": 108076,
+    "width": 1400,
+    "height": 700
+  },
+  {
+    "source": "reference/house-bank.jpg",
+    "webp": "reference/house-bank.webp",
+    "before": 314881,
+    "after": 84410,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/key-city.jpg",
+    "webp": "reference/key-city.webp",
+    "before": 379329,
+    "after": 100558,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/key-deer.jpg",
+    "webp": "reference/key-deer.webp",
+    "before": 334121,
+    "after": 80624,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/key-diamond.jpg",
+    "webp": "reference/key-diamond.webp",
+    "before": 420279,
+    "after": 122978,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/key-heart.jpg",
+    "webp": "reference/key-heart.webp",
+    "before": 375398,
+    "after": 101028,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/key-house.jpg",
+    "webp": "reference/key-house.webp",
+    "before": 319983,
+    "after": 82812,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/key-life.jpg",
+    "webp": "reference/key-life.webp",
+    "before": 420742,
+    "after": 132168,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/key-minimal.jpg",
+    "webp": "reference/key-minimal.webp",
+    "before": 446207,
+    "after": 143780,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/key-mountains.jpg",
+    "webp": "reference/key-mountains.webp",
+    "before": 404222,
+    "after": 124836,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/key-owl.jpg",
+    "webp": "reference/key-owl.webp",
+    "before": 445631,
+    "after": 147392,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/key-product-flat.jpg",
+    "webp": "reference/key-product-flat.webp",
+    "before": 290613,
+    "after": 72962,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/key-product-portrait.jpg",
+    "webp": "reference/key-product-portrait.webp",
+    "before": 406630,
+    "after": 95530,
+    "width": 1166,
+    "height": 1400
+  },
+  {
+    "source": "reference/key-product.jpg",
+    "webp": "reference/key-product.webp",
+    "before": 380364,
+    "after": 104212,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/leaves.jpg",
+    "webp": "reference/leaves.webp",
+    "before": 378827,
+    "after": 97736,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/life-panel.jpg",
+    "webp": "reference/life-panel.webp",
+    "before": 394874,
+    "after": 112730,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/mini-bar.jpg",
+    "webp": "reference/mini-bar.webp",
+    "before": 360103,
+    "after": 103658,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/notebook.jpg",
+    "webp": "reference/notebook.webp",
+    "before": 484599,
+    "after": 184122,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "reference/pig-bank.jpg",
+    "webp": "reference/pig-bank.webp",
+    "before": 322892,
+    "after": 87414,
+    "width": 1400,
+    "height": 933
+  },
+  {
+    "source": "savings.jpg",
+    "webp": "savings.webp",
+    "before": 423406,
+    "after": 157874,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "tree.jpg",
+    "webp": "tree.webp",
+    "before": 463583,
+    "after": 164844,
+    "width": 1536,
+    "height": 1024
+  }
+]

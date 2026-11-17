@@ -8,7 +8,8 @@
   <meta name="theme-color" content="#fbf7ef">
   <title><%= title %> — vamknam.by</title>
   <meta name="description" content="Авторские ключницы, копилки, блокноты и декор из дерева. Лазерная резка и персонализация. vamknam.by">
-  <link rel="icon" href="assets/logo.jpg">
+  <link rel="icon" href="assets/logo.webp" type="image/webp">
+  <% if (currentPath === '/') { %><link rel="preload" as="image" href="assets/reference/hero.webp" fetchpriority="high"><% } %>
   <link rel="stylesheet" href="style.css?v=<%= assetVersion %>">
   <script defer src="app.js?v=<%= assetVersion %>"></script>
 </head>

@@ -250,3 +250,41 @@ body.cart-open{overflow:hidden}
 button:not(.main-photo):not(.thumb),.button,.order-button,.add-to-cart,#header .header-cart,.catalog-categories a{border-radius:9999px}
 .catalog-categories [aria-current]{border:2px solid var(--brown);background:var(--paper);color:#6c4e2b;padding:6px 12px}
 @media(max-width:740px){.product-gallery{padding:16px}.catalog-categories [aria-current]{padding:6px 9px}}
+/* Страница заказа по согласованному макету ImageGen. */
+.order-page{background:#fbf4e8}
+.order-page .order-container{width:calc(100% - 80px);max-width:1100px;margin:0 auto;padding:38px 0 54px}
+.order-intro{display:grid;grid-template-columns:minmax(0,1fr) 260px;align-items:center;gap:28px;margin-bottom:30px}
+.order-page .order-title{font-size:58px;font-weight:700;letter-spacing:-1.1px;line-height:1.05}
+.order-page .title-flourish{width:300px;max-width:70%;margin:16px 0 18px;gap:12px}
+.order-page .title-flourish .icon{width:22px;height:20px}
+.order-lead{font-size:21px;line-height:1.5;max-width:720px}
+.order-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:22px}
+.order-actions .button{min-height:48px;font-size:18px;padding:12px 22px;background:linear-gradient(155deg,#bb8d56,#966331);box-shadow:0 4px 10px #8d653b16}
+.order-actions .button>.icon{width:23px;height:23px}
+.order-actions .order-call{background:transparent;color:var(--ink);border-color:#936d44;box-shadow:none}
+.order-actions .order-call>.icon{filter:none}
+.order-hero-art{width:260px;height:240px;object-fit:contain;justify-self:center}
+.order-flow{display:grid;gap:18px}
+.order-page .order-step{display:grid;grid-template-columns:52px minmax(0,1fr) 145px;align-items:center;gap:22px;padding:24px 28px;border:1px solid #dec6a7;border-radius:18px;background:#fffaf2;box-shadow:0 5px 14px #8159290b}
+.order-page .order-number{width:48px;height:48px;font:31px/48px var(--serif);background:#f0dfc0;color:#6f4b25;border:1px solid #dec19a;align-self:start;margin-top:1px}
+.order-page .order-step .order-copy{padding:0}
+.order-page .order-copy h2{font-size:31px;font-weight:700;line-height:1.15;margin-bottom:10px;letter-spacing:-.3px}
+.order-page .order-copy p,.order-page .order-copy li{font-size:17px;line-height:1.5}
+.order-checklist{padding-left:22px;margin:10px 0}
+.order-checklist>li{padding-left:2px;margin:3px 0}
+.order-page .order-hint{font-size:15px;color:#856844;margin-top:12px;line-height:1.45}
+.order-page .dates-note{font-size:15px!important;gap:9px}
+.order-art{width:145px;height:145px;object-fit:contain;align-self:center;justify-self:center}
+.order-page .pickup-step .order-copy>p{white-space:normal;align-items:flex-start;gap:10px;margin-top:10px;font-size:17px}
+.order-page .pickup-step .order-copy>p .icon{margin-top:2px;flex:none}
+.order-page .order-request{margin-top:30px;border:1px solid #dec6a7;border-radius:20px;padding:30px 34px 34px;background:#fffaf2;box-shadow:0 7px 18px #8159290b;scroll-margin-top:100px}
+.order-page .order-request>h2{font-size:40px;font-weight:700;letter-spacing:-.5px}
+.order-page .order-request>p{margin:6px 0 25px;font-size:17px;color:#66523e}
+.order-page .form-grid{gap:0 26px}
+.order-page .field{gap:8px;margin-bottom:20px;font-size:16px}
+.order-page .field input,.order-page .field select,.order-page .field textarea{border-color:#cdb99d;border-radius:8px;background:#fffdf8;padding:12px 14px;min-height:47px}
+.order-page .field textarea{min-height:116px}
+.order-page #order-form>.button{min-height:48px;font-size:18px;padding:12px 28px;background:linear-gradient(155deg,#bb8d56,#966331);box-shadow:0 4px 10px #8d653b16}
+.order-page .button:hover{background:#845b33}
+@media(max-width:900px){.order-intro{grid-template-columns:minmax(0,1fr) 170px;gap:15px}.order-page .order-title{font-size:48px}.order-hero-art{width:170px;height:200px}.order-lead{font-size:18px}.order-actions{gap:10px}.order-actions .button{font-size:16px;padding:11px 16px}.order-page .order-step{grid-template-columns:44px minmax(0,1fr) 100px;padding:23px;gap:16px}.order-art{width:100px;height:100px}.order-page .order-copy h2{font-size:28px}}
+@media(max-width:540px){.order-page .order-container{width:calc(100% - 32px);padding-top:27px;padding-bottom:32px}.order-intro{display:block;margin-bottom:24px}.order-hero-art{display:none}.order-page .order-title{font-size:43px;letter-spacing:-.7px}.order-page .title-flourish{margin:13px 0 17px}.order-lead{font-size:17px}.order-actions{margin-top:19px;gap:10px}.order-actions .button{width:100%;font-size:17px;min-height:46px}.order-flow{gap:14px}.order-page .order-step{grid-template-columns:34px minmax(0,1fr);gap:12px;padding:19px 16px;border-radius:15px;align-items:start}.order-page .order-number{width:34px;height:34px;font-size:24px;line-height:32px}.order-page .order-copy h2{font-size:26px;line-height:1.1;margin-bottom:10px}.order-page .order-copy p,.order-page .order-copy li,.order-page .pickup-step .order-copy>p{font-size:15px;line-height:1.5}.order-checklist{padding-left:18px}.order-page .order-hint{font-size:13px}.order-art{display:none}.order-page .order-request{margin-top:24px;padding:22px 18px;border-radius:16px}.order-page .order-request>h2{font-size:33px;line-height:1.1}.order-page .order-request>p{font-size:15px;margin-top:10px}.order-page .form-grid{grid-template-columns:minmax(0,1fr)}.order-page #order-form>.button{width:100%;font-size:17px}}

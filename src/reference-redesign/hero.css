@@ -1,67 +1,66 @@
-/* Geometry from the supplied 3576 × 582 Retina reference (2 physical pixels/CSS px).
-   The reference content area is 1777 CSS px wide; hero height is 220 CSS px. */
-@media (min-width: 1051px) {
-  #app .ref-hero {
-    height: 220px;
-    padding-bottom: 0;
-    background: #f5f0e7;
-  }
-
-  #app .ref-hero-inner {
-    width: 81%;
-    max-width: 1060px;
-    height: 100%;
-    margin-inline: auto;
-  }
-
-  #app .ref-hero-copy {
-    width: 52%;
-    padding: 23px 0 0;
-  }
-
-  #app .ref-hero-copy h1 {
-    margin: 0 0 8px;
-    font: 400 42px/1.03 'Times New Roman', Georgia, serif;
-    letter-spacing: 0;
-    color: #34291f;
-  }
-
-  #app .ref-hero-copy p {
-    margin: 0 0 13px;
-    font: 400 15px/1.4 Arial, Helvetica, sans-serif;
-    white-space: nowrap;
-    color: #34291f;
-  }
-
-  #app .ref-hero-copy .brown-button {
-    min-height: 32px;
-    padding: 6px 16px;
-    gap: 16px;
-    border: 1px solid #90663d;
-    border-radius: 6px;
-    background: #90663d;
-    color: #fffaf1;
-    font: 400 14px/1.2 Arial, Helvetica, sans-serif;
-  }
-
-  #app .ref-hero-copy .brown-button:hover {
-    background: #79512d;
-    border-color: #79512d;
-  }
-
-  #app .ref-hero-photo {
-    inset: 0 12% 0 auto;
-    width: 56%;
-    height: 100%;
-    overflow: hidden;
-    background: transparent;
-  }
-
-  #app .ref-hero-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% 10%;
-    mix-blend-mode: normal;
-  }
+/* ImageGen art direction; the product photo is a separate standalone asset. */
+#app .ref-hero{height:auto;min-height:0;padding:32px 0 36px;overflow:visible;background:transparent}
+#app .ref-hero-inner{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);align-items:center;gap:52px;width:calc(100% - 64px);max-width:1180px;height:auto;margin-inline:auto;pointer-events:auto}
+#app .ref-hero-copy{width:auto;min-width:0;padding:0}
+#app .hero-eyebrow{display:flex;align-items:center;gap:18px;margin:0 0 28px;color:#946b42;font:500 11px/1.4 Arial,Helvetica,sans-serif;letter-spacing:.18em}
+#app .hero-eyebrow img{width:64px;height:1px;flex:none}
+#app .ref-hero-copy h1{margin:0 0 22px;font:400 clamp(38px,4vw,56px)/1.07 'Times New Roman',Georgia,serif;letter-spacing:-.025em;color:#3d2c21}
+#app .ref-hero-copy .hero-description{max-width:490px;margin:0 0 28px;color:#574537;font:400 17px/1.6 'PT Sans',Arial,sans-serif;white-space:normal}
+#app .ref-hero-copy .brown-button{min-height:52px;padding:13px 24px;gap:23px;border:1px solid #95663c;border-radius:10px;background:#95663c;color:#fffaf1;font:400 17px/1.3 'PT Sans',Arial,sans-serif;box-shadow:0 4px 10px #7046260a;text-decoration:none;pointer-events:auto}
+#app .ref-hero-copy .brown-button:hover{background:#7b512d;border-color:#7b512d}
+#app .ref-hero-copy .brown-button img{width:23px;height:20px}
+#app .ref-hero-copy .hero-note{margin:18px 0 0;color:#91775f;font:400 12px/1.5 'PT Sans',Arial,sans-serif;white-space:normal}
+#app .ref-hero-photo{position:relative;inset:auto;width:100%;height:auto;margin:0;aspect-ratio:1.28;overflow:hidden;border-radius:48% 48% 24px 24px / 36% 36% 24px 24px;background:#e8d9c3;box-shadow:0 12px 36px #6e492509}
+#app .ref-hero-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;mix-blend-mode:normal}
+.home-page #app>.home-sections{width:calc(100% - 64px);max-width:1180px;padding-top:0}
+.home-page #app .hits{margin-bottom:28px}
+.home-page #app .hits .ornament-title{height:auto;min-height:42px;margin:0 0 22px}
+.home-page #app .hits .ornament-title h2{font-size:36px}
+.home-page #app .hits .home-grid{gap:22px}
+.home-page #app .hits .home-card{height:auto;min-height:0;padding:10px;display:flex;flex-direction:column}
+.home-page #app .hits .ref-card-photo{height:auto;width:100%;aspect-ratio:1.9;border-radius:6px}
+.home-page #app .hits .ref-card-body{padding:10px 0 3px;display:flex;flex-direction:column;align-items:center;flex:1}
+.home-page #app .hits .home-card h3{font:400 20px/1.2 'Times New Roman',Georgia,serif;min-height:0;margin:0 0 5px;white-space:normal}
+.home-page #app .hits .ref-price{font:400 16px/1.4 'PT Sans',Arial,sans-serif;margin:0 0 10px;min-height:22px}
+.home-page #app .hits .custom-card .ref-card-body>p{font:400 12px/1.3 'PT Sans',Arial,sans-serif;margin:-2px 0 2px}
+.home-page #app .hits .order-button{align-self:center;margin-top:auto;min-height:32px;min-width:138px;padding:6px 16px;border-radius:6px;font:400 14px/1.3 'PT Sans',Arial,sans-serif}
+@media(max-width:1100px) and (min-width:741px){
+ #app .ref-hero-inner{gap:32px;width:calc(100% - 48px)}
+ #app .ref-hero-copy h1{font-size:clamp(34px,4vw,44px)}
+ #app .ref-hero-copy .hero-description{font-size:16px}
+ #app .hero-eyebrow{font-size:10px;letter-spacing:.12em;gap:12px;margin-bottom:20px}
+ #app .hero-eyebrow img{width:38px}
+ #app .ref-hero-copy .hero-note{font-size:11px}
+ .home-page #app>.home-sections{width:calc(100% - 48px)}
+ .home-page #app .hits .home-grid{gap:14px}
+ .home-page #app .hits .home-card{padding:7px}
+ .home-page #app .hits .home-card h3{font-size:17px}
+}
+@media(max-width:740px){
+ #app .ref-hero{padding:24px 0 28px}
+ #app .ref-hero-inner{width:calc(100% - 32px);max-width:560px;grid-template-columns:minmax(0,1fr);gap:26px}
+ #app .hero-eyebrow{font-size:10px;letter-spacing:.14em;gap:14px;margin-bottom:18px}
+ #app .hero-eyebrow img{width:50px}
+ #app .ref-hero-copy h1{font-size:clamp(30px,8.7vw,46px);line-height:1.08;margin-bottom:16px}
+ #app .ref-hero-copy .hero-description{max-width:460px;margin-bottom:22px;font-size:15px;line-height:1.6}
+ #app .hero-desktop-break{display:none}
+ #app .ref-hero-copy .brown-button{min-height:48px;padding:11px 22px;font-size:16px}
+ #app .ref-hero-copy .hero-note{margin-top:13px;font-size:11px}
+ #app .ref-hero-photo{aspect-ratio:1.28;border-radius:47% 47% 20px 20px / 32% 32% 20px 20px}
+ .home-page #app>.home-sections{width:calc(100% - 32px);max-width:560px}
+ .home-page #app .hits .ornament-title{min-height:34px;margin-bottom:17px;gap:6px}
+ .home-page #app .hits .ornament-title h2{font-size:28px}
+ .home-page #app .hits .ornament-title>span{width:42px}
+ .home-page #app .hits .home-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+ .home-page #app .hits .home-card{padding:7px}
+ .home-page #app .hits .ref-card-photo{aspect-ratio:1.55}
+ .home-page #app .hits .ref-card-body{padding-top:9px}
+ .home-page #app .hits .home-card h3{font-size:16px;line-height:1.15;min-height:36px;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+ .home-page #app .hits .custom-card h3{min-height:20px}
+ .home-page #app .hits .ref-price{font-size:15px}
+ .home-page #app .hits .order-button{min-width:0;max-width:100%;padding:6px 12px;font-size:13px}
+}
+@media(max-width:400px){
+ .home-page #app .process-item>div:last-child{min-width:0}
+ .home-page #app .process-item h3{white-space:normal;font-size:17px}
 }

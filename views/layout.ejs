@@ -11,6 +11,7 @@
   <link rel="icon" href="assets/logo.webp" type="image/webp">
   <% if (currentPath === '/') { %><link rel="preload" as="image" href="assets/reference/hero.webp" fetchpriority="high"><% } %>
   <link rel="stylesheet" href="style.css?v=<%= assetVersion %>">
+  <script>window.VAMKNAM_SITE=<%- JSON.stringify(settings).replace(/</g,'\\u003c') %>;</script>
   <script defer src="app.js?v=<%= assetVersion %>"></script>
 </head>
 <body class="<%= pageClass %>">

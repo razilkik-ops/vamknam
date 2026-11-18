@@ -1,9 +1,10 @@
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import ejs from 'ejs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
+const settings = JSON.parse(await readFile(path.join(root,'site-settings.json'),'utf8'));
 const pages = [
   ['index.html', 'Изделия из дерева с душой', '/'],
   ['catalog/index.html', 'Каталог', '/catalog'],
@@ -32,9 +33,9 @@ for (const [filename,title,currentPath] of pages) {
   const depth = filename.split('/').length - 1;
   const pageClass = currentPath === '/' ? 'home-page' : currentPath === '/catalog' ? 'catalog-page' : currentPath === '/how-to-order' ? 'order-page' : currentPath.startsWith('/product') ? 'detail-page' : 'inner-page';
   const html = await ejs.renderFile(path.join(root,'views/layout.ejs'), {
-    title,currentPath,pageClass,navigation,
+    title,currentPath,pageClass,navigation,settings,
     base: depth ? '../'.repeat(depth) : './',
-    is404: filename === '404.html',assetVersion:'20261117-6'
+    is404: filename === '404.html',assetVersion:'20261118-wishes'
   }, {rmWhitespace:true});
   const target = path.join(root,'dist',filename);
   await mkdir(path.dirname(target),{recursive:true});

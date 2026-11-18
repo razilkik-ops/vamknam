@@ -1,0 +1,67 @@
+/* Geometry from the supplied 3576 × 582 Retina reference (2 physical pixels/CSS px).
+   The reference content area is 1777 CSS px wide; hero height is 220 CSS px. */
+@media (min-width: 1051px) {
+  #app .ref-hero {
+    height: 220px;
+    padding-bottom: 0;
+    background: #f5f0e7;
+  }
+
+  #app .ref-hero-inner {
+    width: 81%;
+    max-width: 1060px;
+    height: 100%;
+    margin-inline: auto;
+  }
+
+  #app .ref-hero-copy {
+    width: 52%;
+    padding: 23px 0 0;
+  }
+
+  #app .ref-hero-copy h1 {
+    margin: 0 0 8px;
+    font: 400 42px/1.03 'Times New Roman', Georgia, serif;
+    letter-spacing: 0;
+    color: #34291f;
+  }
+
+  #app .ref-hero-copy p {
+    margin: 0 0 13px;
+    font: 400 15px/1.4 Arial, Helvetica, sans-serif;
+    white-space: nowrap;
+    color: #34291f;
+  }
+
+  #app .ref-hero-copy .brown-button {
+    min-height: 32px;
+    padding: 6px 16px;
+    gap: 16px;
+    border: 1px solid #90663d;
+    border-radius: 6px;
+    background: #90663d;
+    color: #fffaf1;
+    font: 400 14px/1.2 Arial, Helvetica, sans-serif;
+  }
+
+  #app .ref-hero-copy .brown-button:hover {
+    background: #79512d;
+    border-color: #79512d;
+  }
+
+  #app .ref-hero-photo {
+    inset: 0 12% 0 auto;
+    width: 56%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  #app .ref-hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 10%;
+    mix-blend-mode: normal;
+  }
+}

@@ -55,7 +55,7 @@ for (const [filename,title,currentPath] of pages) {
   const html = await ejs.renderFile(path.join(root,'views/layout.ejs'), {
     title,currentPath,pageClass,navigation,
     base: depth ? '../'.repeat(depth) : './',
-    is404: filename === '404.html',assetVersion:'20261118-reference'
+    is404: filename === '404.html',assetVersion:'20261118-hero-reference'
   }, {rmWhitespace:true});
   const target = path.join(root,'dist',filename);
   await mkdir(path.dirname(target),{recursive:true});
@@ -64,5 +64,5 @@ for (const [filename,title,currentPath] of pages) {
 console.log(`Built ${pages.length} static pages with shared EJS header and cart.`);
 
 await writeFile(path.join(root,'dist/app.js'),await readFile(path.join(root,'src/reference-redesign/app.js'),'utf8'));
-await writeFile(path.join(root,'dist/style.css'),(await readFile(path.join(root,'src/reference-redesign/site-shell.css'),'utf8'))+'\n'+(await readFile(path.join(root,'src/reference-redesign/reference.css'),'utf8')));
+await writeFile(path.join(root,'dist/style.css'),(await readFile(path.join(root,'src/reference-redesign/site-shell.css'),'utf8'))+'\n'+(await readFile(path.join(root,'src/reference-redesign/reference.css'),'utf8'))+'\n'+(await readFile(path.join(root,'src/reference-redesign/hero.css'),'utf8')));
 console.log('Applied reference redesign with the retained shared header and cart drawer.');

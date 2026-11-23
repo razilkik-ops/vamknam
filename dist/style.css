@@ -406,7 +406,12 @@ button:not(.main-photo):not(.thumb),.button,.order-button,.add-to-cart,#header .
 .home-catalog-filters button[aria-pressed="true"],.home-catalog-filters button:hover{background:#ead9b9;border-color:#b99764}
 .home-catalog-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
 .home-catalog-grid .product-card{display:flex;flex-direction:column}
-.home-catalog-grid .card-image img{width:100%;height:auto;aspect-ratio:1.25;object-fit:contain;background:#eee8df}
+.home-catalog-grid .card-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto 1400 / 933;
+}
 .home-catalog-grid .card-info{display:flex;flex-direction:column;align-items:center;flex:1;padding:13px 8px 14px}
 .home-catalog-grid .card-info h3{font-size:19px;line-height:1.2;min-height:46px;display:flex;align-items:center;justify-content:center}
 .home-catalog-grid .card-price{font-size:18px;margin:5px 0 12px}

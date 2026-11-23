@@ -35,7 +35,7 @@ for (const [filename,title,currentPath] of pages) {
   const html = await ejs.renderFile(path.join(root,'views/layout.ejs'), {
     title,currentPath,pageClass,navigation,settings,
     base: depth ? '../'.repeat(depth) : './',
-    is404: filename === '404.html',assetVersion:'20261118-wishes'
+    is404: filename === '404.html',assetVersion:'20261123-header'
   }, {rmWhitespace:true});
   const target = path.join(root,'dist',filename);
   await mkdir(path.dirname(target),{recursive:true});

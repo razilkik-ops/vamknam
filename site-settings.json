@@ -1,5 +1,6 @@
 {
   "email": "vamknamcraft@gmail.com",
-  "heroVideo": "",
+  "heroVideo": "assets/video/laser-engraving.mp4",
+  "heroVideoPoster": "assets/video/laser-engraving-poster.webp",
   "heroVideoType": "video/mp4"
 }

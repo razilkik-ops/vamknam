@@ -21,3 +21,7 @@
 
 `assets/order/bird.webp`, `checklist.webp`, `calendar.webp`, `home.webp` созданы встроенным ImageGen отдельными вызовами. Прозрачный фон сохранён. Исходные PNG и полный набор промптов: `reference-assets/ORDER-ICONS.md`. Из общих макетов изображения не вырезались.
 
+
+## Видео на главной
+
+`dist/assets/video/laser-engraving.mp4` создано в Wan 2.2 I2V по третьей фотографии лазерного станка, предоставленной пользователем 27.11.2026. Ролик замедлен и зациклен. Постер сохранён из видеоряда в отдельный файл `dist/assets/video/laser-engraving-poster.webp`.

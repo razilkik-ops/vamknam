@@ -47,12 +47,28 @@ function productCard(p,compact=false){return `<article class="product-card ${com
 function home(){
  document.title='vamknam.by — именные сувениры с душой';
  const hits=['leaves','house','tree','custom','notebook','pig','mini-bar','key-mountains','key-owl','key-heart'].map(getProduct);
- const media=SITE.heroVideo?`<video class="hero-video" controls autoplay muted loop playsinline preload="metadata" aria-label="Лазерная резка по фанере"><source src="${esc(SITE.heroVideo)}" type="${esc(SITE.heroVideoType||'video/mp4')}">Ваш браузер не поддерживает видео. <a href="${esc(SITE.heroVideo)}">Открыть ролик</a></video>`:photo('hero','Ключница из дерева с веткой и листьями','',true);
- app.innerHTML=`<section class="hero"><div class="hero-photo ${SITE.heroVideo?'is-video':''}">${media}</div><div class="home-container hero-inner"><div class="hero-copy"><h1>Создаём то, что<br>не купишь в магазине.</h1><p class="hero-subtitle">Именные сувениры с душой.</p></div></div></section>
+ const media=SITE.heroVideo
+  ? `<video class="hero-video" id="hero-video" muted loop playsinline preload="none" poster="${esc(SITE.heroVideoPoster||A+'hero.webp')}" aria-label="Лазерное выжигание узора на фанере"><source src="${esc(SITE.heroVideo)}" type="${esc(SITE.heroVideoType||'video/mp4')}"></video><button class="hero-video-toggle" type="button" aria-controls="hero-video">Воспроизвести</button>`
+  : photo('hero','Ключница из дерева с веткой и листьями','',true);
+ app.innerHTML=`<section class="hero${SITE.heroVideo?' hero-with-video':''}"><div class="hero-photo">${media}</div><div class="home-container hero-inner"><div class="hero-copy"><h1>Создаём то, что<br>не купишь в магазине.</h1><p class="hero-subtitle">Именные сувениры с душой.</p></div></div></section>
  <div class="home-container home-sections"><section class="hits" aria-labelledby="hits-heading">${title('Хиты сезона','hits-heading')}<div class="hits-carousel" role="region" aria-roledescription="карусель" aria-label="10 хитов сезона"><button type="button" class="carousel-arrow carousel-prev" data-hit-direction="-1" aria-label="Предыдущие изделия" disabled><img src="assets/reference/carousel-prev.svg" width="24" height="24" alt=""></button><div class="featured-track" id="hits-track" role="list" tabindex="0" aria-label="Хиты сезона — прокрутка стрелками или свайпом">${hits.map(p=>`<div class="featured-slide" role="listitem">${productCard(p,true)}</div>`).join('')}</div><button type="button" class="carousel-arrow carousel-next" data-hit-direction="1" aria-label="Следующие изделия"><img src="assets/reference/carousel-next.svg" width="24" height="24" alt=""></button></div></section>
  <section class="categories" aria-labelledby="home-catalog-heading">${title('Каталог изделий','home-catalog-heading')}<div class="category-grid">${categories.map(([name,image])=>`<a class="category-card" href="${catalogURL(name)}" title="${esc(name)}">${photo(image,name)}</a>`).join('')}</div></section>
  <section class="how-works">${title('Как это работает')}<div class="steps">${[['choose','Выбираете изделие','Смотрите каталог и выбираете то, что нравится.'],['discuss','Обсуждаем детали и цену','Согласовываем дизайн, материалы и сроки.'],['deliver','Творю с теплом и заботой,','чтобы порадовать вас готовым результатом.']].map(([i,h,p],n)=>`<div class="step"><span class="step-icon"><img class="process-icon" src="assets/process/${i}.webp" alt="" width="88" height="88" loading="lazy"></span><span class="step-number">${n+1}</span><div><h3>${h}</h3><p>${p}</p></div>${n<2?icon('arrow','step-arrow'):''}</div>`).join('')}</div></section></div>`;
+ if(SITE.heroVideo)setupHeroVideo();
  setupHomeCarousel();
+}
+function setupHeroVideo(){
+ const video=document.querySelector('#hero-video');
+ const toggle=document.querySelector('.hero-video-toggle');
+ const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
+ const play=()=>video.play().catch(()=>{});
+ const updateToggle=()=>{toggle.textContent=video.paused?'Воспроизвести':'Пауза';};
+ video.addEventListener('play',updateToggle);
+ video.addEventListener('pause',updateToggle);
+ video.querySelector('source').addEventListener('error',()=>{toggle.hidden=true;});
+ toggle.addEventListener('click',()=>{if(video.paused)play();else video.pause();});
+ reducedMotion.addEventListener('change',event=>{if(event.matches)video.pause();});
+ if(!reducedMotion.matches)play();
 }
 function setupHomeCarousel(){
  const track=document.querySelector('#hits-track');

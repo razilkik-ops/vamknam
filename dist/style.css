@@ -451,20 +451,6 @@ button:not(.main-photo):not(.thumb),.button,.order-button,.add-to-cart,#header .
   object-fit: cover;
   object-position: center;
 }
-.hero-video-toggle {
-  position: absolute;
-  z-index: 2;
-  right: 18px;
-  bottom: 16px;
-  min-height: 34px;
-  border: 1px solid #fff8e969;
-  background: #211b15d9;
-  color: #fff8e9;
-  padding: 5px 13px;
-  font-size: 14px;
-}
-.hero-video-toggle:hover { background: #211b15; }
-.hero-video-toggle:focus-visible { outline-color: #fff8e9; }
 @media (max-width: 970px) {
   .home-page .hero-with-video { padding-bottom: 0; }
   .home-page .hero-with-video .hero-photo {

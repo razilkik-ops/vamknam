@@ -89,7 +89,118 @@ function catalog(){
  <nav class="catalog-categories" aria-label="Разделы каталога">${navigation.map(([value,label])=>`<a href="${catalogURL(value)}"${value===category?' aria-current="page"':''}>${esc(label)}</a>`).join('')}</nav>
  <div class="catalog-grid">${items.map(p=>productCard(p)).join('')}</div></div>`;
 }
-function productPage(id){const p=getProduct(id);if(!p)return notFound();document.title=p.name+' — vamknam.by';const leaves=id==='leaves';const mainImage=leaves?'key-product-portrait':p.image;app.innerHTML=`<section class="product-layout"><div class="product-gallery"><div class="gallery-primary"><button class="main-photo ${leaves?'portrait-photo':''}" type="button" aria-label="Увеличить фотографию">${photo(mainImage,p.name,'',true)}</button></div><div class="thumbnails"><button class="thumb active" data-photo="${mainImage}" aria-label="Основной вид">${photo(mainImage,'Основной вид изделия')}</button>${leaves?`<button class="thumb" data-photo="key-product-flat" aria-label="Вид под углом">${photo('key-product-flat','Изделие под углом')}</button>`:''}</div></div><div class="product-info">${breadcrumb(p.name,`<a href="catalog/">Каталог</a><span>/</span><a href="${catalogURL(p.category)}">${p.category}</a><span>/</span>`)}<h1>${esc(p.name)}</h1><p class="product-price">${priceHTML(p)}</p><p class="price-note">${p.price===null?'Стоимость согласовывается индивидуально':'Цена за изделие без персонализации'}</p><p class="product-description">${esc(p.description)}</p><dl class="product-specs">${[['leaf','Материал','Качественная фанера (берёза)'],['ruler','Размер',p.size||'Согласовывается при заказе'],['edit','Персонализация','Можно добавить имя или надпись'],['clock','Срок изготовления','1–2 рабочих дня']].map(([i,label,value])=>`<div>${icon(i)}<dt>${label}</dt><dd>${value}</dd></div>`).join('')}</dl><form id="product-form" data-id="${p.id}"><button class="add-to-cart" type="submit">Добавить в Корзину ${icon('cart')}</button><details class="personalization"><summary>Добавить надпись или пожелания</summary><label class="field">Ваша надпись<input name="personalization" maxlength="140" placeholder="Имя, дата или пожелание"></label><label class="field">Количество<input type="number" name="quantity" value="1" min="1" max="99" required></label></details></form></div></section><dialog id="photo-dialog"><button class="close-dialog" aria-label="Закрыть фотографию">×</button>${photo(mainImage,p.name)}<p>${esc(p.name)}</p></dialog>`;}
+function productPage(id){const p=getProduct(id);if(!p)return notFound();document.title=p.name+' — vamknam.by';const leaves=id==='leaves';const mainImage=leaves?'key-product-portrait':p.image;app.innerHTML=`<section class="product-layout"><div class="product-gallery"><div class="gallery-primary"><button class="main-photo ${leaves?'portrait-photo':''}" type="button" aria-label="Увеличить фотографию" aria-haspopup="dialog">${photo(mainImage,p.name,'',true)}</button></div><div class="thumbnails"><button class="thumb active" data-photo="${mainImage}" aria-label="Основной вид">${photo(mainImage,'Основной вид изделия')}</button>${leaves?`<button class="thumb" data-photo="key-product-flat" aria-label="Вид под углом">${photo('key-product-flat','Изделие под углом')}</button>`:''}</div></div><div class="product-info">${breadcrumb(p.name,`<a href="catalog/">Каталог</a><span>/</span><a href="${catalogURL(p.category)}">${p.category}</a><span>/</span>`)}<h1>${esc(p.name)}</h1><p class="product-price">${priceHTML(p)}</p><p class="price-note">${p.price===null?'Стоимость согласовывается индивидуально':'Цена за изделие без персонализации'}</p><p class="product-description">${esc(p.description)}</p><dl class="product-specs">${[['leaf','Материал','Качественная фанера (берёза)'],['ruler','Размер',p.size||'Согласовывается при заказе'],['edit','Персонализация','Можно добавить имя или надпись'],['clock','Срок изготовления','1–2 рабочих дня']].map(([i,label,value])=>`<div>${icon(i)}<dt>${label}</dt><dd>${value}</dd></div>`).join('')}</dl><form id="product-form" data-id="${p.id}"><button class="add-to-cart" type="submit">Добавить в Корзину ${icon('cart')}</button><details class="personalization"><summary>Добавить надпись или пожелания</summary><label class="field">Ваша надпись<input name="personalization" maxlength="140" placeholder="Имя, дата или пожелание"></label><label class="field">Количество<input type="number" name="quantity" value="1" min="1" max="99" required></label></details></form></div></section><dialog id="photo-dialog" aria-labelledby="photo-viewer-title">
+ <div class="photo-viewer-header">
+  <h2 id="photo-viewer-title">${esc(p.name)}</h2>
+  <button class="photo-viewer-button" type="button" data-photo-close aria-label="Закрыть фотографию" autofocus>${icon('close')}</button>
+ </div>
+ <div class="photo-viewer-viewport" tabindex="0" role="region" aria-label="Фотография товара">
+  <div class="photo-viewer-canvas">${photo(mainImage,p.name)}</div>
+ </div>
+ <div class="photo-viewer-controls" role="group" aria-label="Масштаб фотографии">
+  <button class="photo-viewer-button" type="button" data-photo-step="-0.5" aria-label="Уменьшить масштаб">${icon('minus')}</button>
+  <output aria-live="off">100%</output>
+  <button class="photo-viewer-button" type="button" data-photo-step="0.5" aria-label="Увеличить масштаб">${icon('plus')}</button>
+ </div>
+ </dialog>`;
+ setupProductGallery();
+}
+function setupProductGallery(){
+ const mainPhoto=document.querySelector('.main-photo');
+ const mainImage=mainPhoto.querySelector('img');
+ const dialog=document.querySelector('#photo-dialog');
+ const viewport=dialog.querySelector('.photo-viewer-viewport');
+ const image=viewport.querySelector('img');
+ const scaleLabel=dialog.querySelector('output');
+ const zoomButtons=[...dialog.querySelectorAll('[data-photo-step]')];
+ const thumbnails=[...document.querySelectorAll('.thumbnails [data-photo]')];
+ let zoom=1;
+ let drag;
+ let pinch;
+
+ function setZoom(value,x=viewport.clientWidth/2,y=viewport.clientHeight/2){
+  const previous=image.getBoundingClientRect();
+  const bounds=viewport.getBoundingClientRect();
+  const relativeX=previous.width?Math.min(1,Math.max(0,(x+bounds.left-previous.left)/previous.width)):.5;
+  const relativeY=previous.height?Math.min(1,Math.max(0,(y+bounds.top-previous.top)/previous.height)):.5;
+  zoom=Math.max(1,Math.min(3,value));
+  const width=image.naturalWidth||Number(image.getAttribute('width'));
+  const height=image.naturalHeight||Number(image.getAttribute('height'));
+  const fit=Math.min(viewport.clientWidth/width,viewport.clientHeight/height);
+  image.style.width=width*fit*zoom+'px';
+  const resized=image.getBoundingClientRect();
+  viewport.scrollLeft+=resized.left-bounds.left+relativeX*resized.width-x;
+  viewport.scrollTop+=resized.top-bounds.top+relativeY*resized.height-y;
+  viewport.classList.toggle('is-zoomed',zoom>1);
+  scaleLabel.value=Math.round(zoom*100)+'%';
+  zoomButtons[0].setAttribute('aria-disabled',String(zoom===1));
+  zoomButtons[1].setAttribute('aria-disabled',String(zoom===3));
+ }
+
+ thumbnails.forEach(thumb=>thumb.addEventListener('click',()=>{
+  const name=thumb.dataset.photo;
+  mainImage.src=A+name+'.webp';
+  mainPhoto.classList.toggle('portrait-photo',name==='key-product-portrait');
+  thumbnails.forEach(item=>item.classList.toggle('active',item===thumb));
+ }));
+ mainPhoto.addEventListener('click',()=>{
+  image.src=mainImage.src;
+  dialog.showModal();
+  viewport.scrollTo(0,0);
+  setZoom(1);
+ });
+ dialog.querySelector('[data-photo-close]').addEventListener('click',()=>dialog.close());
+ dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
+ image.addEventListener('load',()=>{if(dialog.open)setZoom(zoom);});
+ new ResizeObserver(()=>{if(dialog.open)setZoom(zoom);}).observe(viewport);
+ zoomButtons.forEach(button=>button.addEventListener('click',()=>setZoom(zoom+Number(button.dataset.photoStep))));
+ viewport.addEventListener('wheel',event=>{
+  const {left,top}=viewport.getBoundingClientRect();
+  const delta=event.deltaY*(event.deltaMode===1?16:1);
+  event.preventDefault();
+  setZoom(zoom*Math.exp(-delta*.005),event.clientX-left,event.clientY-top);
+ },{passive:false});
+
+ viewport.addEventListener('pointerdown',event=>{
+  if(event.pointerType!=='mouse'||event.button!==0||zoom===1)return;
+  drag={x:event.clientX+viewport.scrollLeft,y:event.clientY+viewport.scrollTop};
+  viewport.setPointerCapture(event.pointerId);
+  viewport.classList.add('is-dragging');
+  event.preventDefault();
+ });
+ viewport.addEventListener('pointermove',event=>{
+  if(drag)viewport.scrollTo(drag.x-event.clientX,drag.y-event.clientY);
+ });
+ viewport.addEventListener('lostpointercapture',()=>{
+  drag=undefined;
+  viewport.classList.remove('is-dragging');
+ });
+
+ function pinchState(touches){
+  const first=touches[0],second=touches[1];
+  const {left,top}=viewport.getBoundingClientRect();
+  return {
+   x:(first.clientX+second.clientX)/2-left,
+   y:(first.clientY+second.clientY)/2-top,
+   distance:Math.hypot(first.clientX-second.clientX,first.clientY-second.clientY)
+  };
+ }
+ viewport.addEventListener('touchstart',event=>{
+  if(event.touches.length!==2)return;
+  pinch=pinchState(event.touches);
+  event.preventDefault();
+ },{passive:false});
+ viewport.addEventListener('touchmove',event=>{
+  if(!pinch||event.touches.length!==2)return;
+  const next=pinchState(event.touches);
+  setZoom(zoom*next.distance/Math.max(1,pinch.distance),pinch.x,pinch.y);
+  viewport.scrollLeft+=pinch.x-next.x;
+  viewport.scrollTop+=pinch.y-next.y;
+  pinch=next;
+  event.preventDefault();
+ },{passive:false});
+ for(const type of ['touchend','touchcancel'])viewport.addEventListener(type,()=>{pinch=undefined;});
+}
 function orderPage(){
  app.innerHTML=`<div class="order-container order-design">
   <section class="order-intro">
@@ -157,9 +268,6 @@ cartDrawer.addEventListener('click',e=>{if(e.target===cartDrawer){const r=cartDr
 document.querySelector('#header-cart').addEventListener('click',e=>{if(!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&!e.altKey&&e.button===0){e.preventDefault();openCart();}});
 document.querySelector('#menu-toggle').addEventListener('click',e=>{const btn=e.currentTarget;const open=btn.getAttribute('aria-expanded')!=='true';btn.setAttribute('aria-expanded',open);btn.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню');document.querySelector('#main-nav').classList.toggle('open',open);});
 document.addEventListener('click',e=>{
- const thumb=e.target.closest('[data-photo]');if(thumb){const name=thumb.dataset.photo;document.querySelector('.main-photo img').src=A+name+'.webp';document.querySelector('.main-photo').classList.toggle('portrait-photo',name==='key-product-portrait');document.querySelector('#photo-dialog img').src=A+name+'.webp';document.querySelectorAll('.thumb').forEach(el=>el.classList.toggle('active',el===thumb));}
- if(e.target.closest('.main-photo'))document.querySelector('#photo-dialog').showModal();
- if(e.target.closest('.close-dialog'))document.querySelector('#photo-dialog').close();
  const qty=e.target.closest('[data-cart-qty]');if(qty){const index=Number(qty.dataset.cartQty);const item=cart[index];if(item){item.qty=Math.max(1,Math.min(99,item.qty+Number(qty.dataset.delta)));refreshCartViews(`[data-cart-qty="${index}"][data-delta="${qty.dataset.delta}"]`);}}
  const remove=e.target.closest('[data-cart-remove]');if(remove){const index=Number(remove.dataset.cartRemove);if(cart[index]){cart.splice(index,1);refreshCartViews();}}
  if(e.target.closest('[data-cart-close]'))closeCart();

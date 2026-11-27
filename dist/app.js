@@ -89,7 +89,7 @@ function catalog(){
  <nav class="catalog-categories" aria-label="Разделы каталога">${navigation.map(([value,label])=>`<a href="${catalogURL(value)}"${value===category?' aria-current="page"':''}>${esc(label)}</a>`).join('')}</nav>
  <div class="catalog-grid">${items.map(p=>productCard(p)).join('')}</div></div>`;
 }
-function productPage(id){const p=getProduct(id);if(!p)return notFound();document.title=p.name+' — vamknam.by';const leaves=id==='leaves';const mainImage=leaves?'key-product-portrait':p.image;app.innerHTML=`<section class="product-layout"><div class="product-gallery"><div class="gallery-primary"><button class="main-photo ${leaves?'portrait-photo':''}" type="button" aria-label="Увеличить фотографию" aria-haspopup="dialog">${photo(mainImage,p.name,'',true)}</button></div><div class="thumbnails"><button class="thumb active" data-photo="${mainImage}" aria-label="Основной вид">${photo(mainImage,'Основной вид изделия')}</button>${leaves?`<button class="thumb" data-photo="key-product-flat" aria-label="Вид под углом">${photo('key-product-flat','Изделие под углом')}</button>`:''}</div></div><div class="product-info">${breadcrumb(p.name,`<a href="catalog/">Каталог</a><span>/</span><a href="${catalogURL(p.category)}">${p.category}</a><span>/</span>`)}<h1>${esc(p.name)}</h1><p class="product-price">${priceHTML(p)}</p><p class="price-note">${p.price===null?'Стоимость согласовывается индивидуально':'Цена за изделие без персонализации'}</p><p class="product-description">${esc(p.description)}</p><dl class="product-specs">${[['leaf','Материал','Качественная фанера (берёза)'],['ruler','Размер',p.size||'Согласовывается при заказе'],['edit','Персонализация','Можно добавить имя или надпись'],['clock','Срок изготовления','1–2 рабочих дня']].map(([i,label,value])=>`<div>${icon(i)}<dt>${label}</dt><dd>${value}</dd></div>`).join('')}</dl><form id="product-form" data-id="${p.id}"><button class="add-to-cart" type="submit">Добавить в Корзину ${icon('cart')}</button><details class="personalization"><summary>Добавить надпись или пожелания</summary><label class="field">Ваша надпись<input name="personalization" maxlength="140" placeholder="Имя, дата или пожелание"></label><label class="field">Количество<input type="number" name="quantity" value="1" min="1" max="99" required></label></details></form></div></section><dialog id="photo-dialog" aria-labelledby="photo-viewer-title">
+function productPage(id){const p=getProduct(id);if(!p)return notFound();document.title=p.name+' — vamknam.by';const leaves=id==='leaves';const mainImage=leaves?'key-product-portrait':p.image;app.innerHTML=`<section class="product-layout"><div class="product-gallery"><div class="gallery-primary"><button class="main-photo ${leaves?'portrait-photo':''}" type="button" aria-label="Увеличить фотографию" aria-haspopup="dialog">${photo(mainImage,p.name,'',true)}</button><span class="photo-magnifier" hidden aria-hidden="true"></span></div><div class="thumbnails"><button class="thumb active" data-photo="${mainImage}" aria-label="Основной вид">${photo(mainImage,'Основной вид изделия')}</button>${leaves?`<button class="thumb" data-photo="key-product-flat" aria-label="Вид под углом">${photo('key-product-flat','Изделие под углом')}</button>`:''}</div></div><div class="product-info">${breadcrumb(p.name,`<a href="catalog/">Каталог</a><span>/</span><a href="${catalogURL(p.category)}">${p.category}</a><span>/</span>`)}<h1>${esc(p.name)}</h1><p class="product-price">${priceHTML(p)}</p><p class="price-note">${p.price===null?'Стоимость согласовывается индивидуально':'Цена за изделие без персонализации'}</p><p class="product-description">${esc(p.description)}</p><dl class="product-specs">${[['leaf','Материал','Качественная фанера (берёза)'],['ruler','Размер',p.size||'Согласовывается при заказе'],['edit','Персонализация','Можно добавить имя или надпись'],['clock','Срок изготовления','1–2 рабочих дня']].map(([i,label,value])=>`<div>${icon(i)}<dt>${label}</dt><dd>${value}</dd></div>`).join('')}</dl><form id="product-form" data-id="${p.id}"><button class="add-to-cart" type="submit">Добавить в Корзину ${icon('cart')}</button><details class="personalization"><summary>Добавить надпись или пожелания</summary><label class="field">Ваша надпись<input name="personalization" maxlength="140" placeholder="Имя, дата или пожелание"></label><label class="field">Количество<input type="number" name="quantity" value="1" min="1" max="99" required></label></details></form></div></section><dialog id="photo-dialog" aria-labelledby="photo-viewer-title">
  <div class="photo-viewer-header">
   <h2 id="photo-viewer-title">${esc(p.name)}</h2>
   <button class="photo-viewer-button" type="button" data-photo-close aria-label="Закрыть фотографию" autofocus>${icon('close')}</button>
@@ -111,6 +111,7 @@ function setupProductGallery(){
  const dialog=document.querySelector('#photo-dialog');
  const viewport=dialog.querySelector('.photo-viewer-viewport');
  const image=viewport.querySelector('img');
+ const hideMagnifier=setupPhotoMagnifier(mainPhoto,mainImage);
  const scaleLabel=dialog.querySelector('output');
  const zoomButtons=[...dialog.querySelectorAll('[data-photo-step]')];
  const thumbnails=[...document.querySelectorAll('.thumbnails [data-photo]')];
@@ -144,6 +145,7 @@ function setupProductGallery(){
   thumbnails.forEach(item=>item.classList.toggle('active',item===thumb));
  }));
  mainPhoto.addEventListener('click',()=>{
+  hideMagnifier();
   image.src=mainImage.src;
   dialog.showModal();
   viewport.scrollTo(0,0);
@@ -200,6 +202,50 @@ function setupProductGallery(){
   event.preventDefault();
  },{passive:false});
  for(const type of ['touchend','touchcancel'])viewport.addEventListener(type,()=>{pinch=undefined;});
+}
+function setupPhotoMagnifier(mainPhoto,image){
+ const frame=mainPhoto.parentElement;
+ const lens=frame.querySelector('.photo-magnifier');
+ const magnification=2.2;
+ let source='';
+
+ function hide(){
+  lens.hidden=true;
+  mainPhoto.classList.remove('is-magnifying');
+ }
+ function move(event){
+  if(event.pointerType!=='mouse'||!image.complete||!image.naturalWidth)return;
+  const bounds=image.getBoundingClientRect();
+  const fit=mainPhoto.classList.contains('portrait-photo')?Math.max:Math.min;
+  const scale=fit(bounds.width/image.naturalWidth,bounds.height/image.naturalHeight);
+  const width=image.naturalWidth*scale;
+  const height=image.naturalHeight*scale;
+  const x=event.clientX-bounds.left-(bounds.width-width)/2;
+  const y=event.clientY-bounds.top-(bounds.height-height)/2;
+  if(x<0||x>width||y<0||y>height){hide();return;}
+
+  const origin=frame.getBoundingClientRect();
+  if(source!==image.currentSrc){
+   source=image.currentSrc;
+   lens.style.backgroundImage='url("'+source+'")';
+  }
+  lens.style.setProperty('--lens-x',event.clientX-origin.left+'px');
+  lens.style.setProperty('--lens-y',event.clientY-origin.top+'px');
+  lens.style.setProperty('--detail-x',x*magnification+'px');
+  lens.style.setProperty('--detail-y',y*magnification+'px');
+  lens.style.backgroundSize=width*magnification+'px '+height*magnification+'px';
+  lens.hidden=false;
+  mainPhoto.classList.add('is-magnifying');
+ }
+
+ mainPhoto.addEventListener('pointerenter',move);
+ mainPhoto.addEventListener('pointermove',move);
+ mainPhoto.addEventListener('pointerleave',hide);
+ mainPhoto.addEventListener('pointercancel',hide);
+ image.addEventListener('load',hide);
+ window.addEventListener('scroll',hide,{passive:true});
+ window.addEventListener('resize',hide);
+ return hide;
 }
 function orderPage(){
  app.innerHTML=`<div class="order-container order-design">

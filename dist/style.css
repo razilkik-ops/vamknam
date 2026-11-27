@@ -233,7 +233,7 @@ body.cart-open{overflow:hidden}
 }
 /* Единая квадратная фотогалерея без блока воспроизведения. */
 .product-gallery{padding:24px;background:#f8f2e7}
-.product-gallery .gallery-primary{display:block}
+.product-gallery .gallery-primary{display:block;position:relative}
 .product-gallery .main-photo{display:block;width:100%;max-width:none;height:auto;aspect-ratio:1;grid-column:auto;background:#f8f2e7}
 .product-gallery .main-photo img{width:100%;height:100%;aspect-ratio:1;object-fit:contain;background:#f8f2e7}
 .product-gallery .main-photo.portrait-photo img{object-fit:cover}
@@ -255,6 +255,29 @@ body.cart-open{overflow:hidden}
   border-radius: 50%;
   background: #fff9ed url("assets/reference/search.svg") center / 20px no-repeat;
   box-shadow: 0 2px 6px #3d281e29;
+}
+.product-layout:has(.is-magnifying) { overflow-x: clip; }
+.product-gallery .main-photo.is-magnifying { cursor: none; }
+.product-gallery .main-photo.is-magnifying::after { opacity: 0; }
+.photo-magnifier {
+  --lens-size: clamp(132px, 15vw, 188px);
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: var(--lens-size);
+  height: var(--lens-size);
+  pointer-events: none;
+  border: 2px solid #fff9ed;
+  border-radius: 50%;
+  box-shadow: 0 3px 13px #3d281e59;
+  background-color: #f8f2e7;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-position:
+    calc(var(--lens-size) / 2 - var(--detail-x))
+    calc(var(--lens-size) / 2 - var(--detail-y));
+  transform: translate3d(calc(var(--lens-x) - 50%), calc(var(--lens-y) - 50%), 0);
 }
 #photo-dialog {
   position: fixed;
